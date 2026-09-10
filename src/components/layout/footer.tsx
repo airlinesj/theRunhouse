@@ -34,26 +34,21 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-muted">Newsletter</h3>
+          <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-muted">Stay connected</h3>
+          <p className="mb-5 max-w-sm text-sm leading-6 text-muted">
+            Get club updates directly from the team by email or WhatsApp.
+          </p>
           <div className="mb-5 flex flex-col gap-3 sm:flex-row">
-            <input
-              aria-label="Email for newsletter"
-              type="email"
-              placeholder="Email address"
-              className="h-12 flex-1 rounded-full border border-border bg-[rgba(244,237,228,0.03)] px-4 text-sm text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-ring"
-            />
             <Button asChild className="w-full sm:w-auto">
-              <a href={whatsappMemberLink} target="_blank" rel="noreferrer">
-                Sign up
-              </a>
+              <a href="mailto:jairlines3@gmail.com?subject=theRunhouse%20updates">Email the club</a>
+            </Button>
+            <Button variant="secondary" asChild className="w-full sm:w-auto">
+              <a href={whatsappMemberLink} target="_blank" rel="noreferrer">WhatsApp</a>
             </Button>
           </div>
           <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Button variant="secondary" asChild className="w-full sm:w-auto">
-              <Link href="https://www.instagram.com/therunhouse___?stkn=MXJud2RxazJhOGg%3D&utm_source=qr" target="_blank" rel="noreferrer">Instagram</Link>
-            </Button>
             <Button variant="outline" asChild className="w-full sm:w-auto">
-              <Link href="https://strava.com" target="_blank" rel="noreferrer">Strava</Link>
+              <Link href="https://www.instagram.com/therunhouse___?stkn=MXJud2RxazJhOGg%3D&utm_source=qr" target="_blank" rel="noreferrer">Instagram</Link>
             </Button>
           </div>
           <p className="text-sm text-muted">© 2026 theRunhouse. All rights reserved.</p>

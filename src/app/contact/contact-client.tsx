@@ -114,7 +114,7 @@ export function ContactClient() {
       </div>
 
       {toast ? (
-        <div aria-live="polite" className="fixed bottom-5 right-5 rounded-full border border-[#F4C95D]/40 bg-surface px-4 py-2 text-sm text-[#F4C95D] shadow-glow">
+        <div aria-live="polite" className="fixed bottom-5 right-5 z-50 max-w-[calc(100vw-2rem)] rounded-2xl border border-[#F4C95D]/40 bg-surface px-4 py-3 text-sm text-[#F4C95D] shadow-glow">
           {toast}
         </div>
       ) : null}

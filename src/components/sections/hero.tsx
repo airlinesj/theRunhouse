@@ -81,6 +81,8 @@ export function Hero() {
                 alt="Runners on a city street"
                 width={1200}
                 height={1400}
+                quality={70}
+                sizes="(min-width: 1024px) 42vw, 100vw"
                 className="h-[560px] w-full object-cover"
               />
             </div>

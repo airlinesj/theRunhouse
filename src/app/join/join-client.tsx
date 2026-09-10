@@ -1,6 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -9,11 +10,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 const paceOptions = [
-  "Under 8 min/mi",
-  "8–9 min/mi",
-  "9–10 min/mi",
-  "10–11 min/mi",
-  "11+ min/mi",
+  "Under 5 min/km",
+  "5–5:40 min/km",
+  "5:40–6:15 min/km",
+  "6:15–6:50 min/km",
+  "6:50+ min/km",
   "Not sure yet",
 ] as const;
 
@@ -28,13 +29,14 @@ const joinSchema = z.object({
 type JoinFormValues = z.infer<typeof joinSchema>;
 
 export function JoinClient() {
+  const [toast, setToast] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<JoinFormValues>({
     resolver: zodResolver(joinSchema),
-    defaultValues: { pace: "9–10 min/mi" },
+    defaultValues: { pace: "5:40–6:15 min/km" },
   });
 
   const onSubmit = (values: JoinFormValues) => {
@@ -42,7 +44,9 @@ export function JoinClient() {
       `Hi, I’m ${values.name}. I’d like to join theRunhouse. My email is ${values.email}. My pace is ${values.pace}. Emergency contact: ${values.emergencyContact}.`,
     );
 
-    window.location.href = `https://wa.me/263771371597?text=${whatsappMessage}`;
+    window.open(`https://wa.me/263771371597?text=${whatsappMessage}`, "_blank", "noopener,noreferrer");
+    setToast("Thanks! WhatsApp is opening with your details.");
+    setTimeout(() => setToast(null), 4000);
   };
 
   return (
@@ -97,7 +101,7 @@ export function JoinClient() {
                 {errors.terms ? <p className="mt-2 text-sm text-[#FFC3B2]">{errors.terms.message}</p> : null}
               </div>
 
-              <div className="md:col-span-2 flex justify-end">
+              <div className="flex justify-end md:col-span-2">
                 <Button type="submit" disabled={isSubmitting} className="min-w-48">
                   {isSubmitting ? "Submitting..." : "Join theRunhouse"}
                 </Button>
@@ -106,6 +110,12 @@ export function JoinClient() {
           </CardContent>
         </Card>
       </div>
+
+      {toast ? (
+        <div aria-live="polite" className="fixed bottom-5 right-5 z-50 max-w-[calc(100vw-2rem)] rounded-2xl border border-[#F4C95D]/40 bg-surface px-4 py-3 text-sm text-[#F4C95D] shadow-glow">
+          {toast}
+        </div>
+      ) : null}
     </div>
   );
 }

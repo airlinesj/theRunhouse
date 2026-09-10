@@ -49,7 +49,7 @@ export default function EventsPage() {
           {gallery.map((image, index) => (
             <Card key={`${image}-${index}`} className="mb-4 overflow-hidden border-border bg-surface p-0 break-inside-avoid">
               <div className="relative h-72 overflow-hidden">
-                <Image src={image} alt={`Runhouse gallery image ${index + 1}`} fill className="object-cover" />
+                <Image src={image} alt={`Runhouse gallery image ${index + 1}`} fill quality={70} sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
               </div>
             </Card>
           ))}

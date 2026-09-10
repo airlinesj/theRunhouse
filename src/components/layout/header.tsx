@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
@@ -80,20 +79,12 @@ export function Header() {
                 </div>
               </div>
 
-              <motion.nav
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.2 }}
-                className="mt-8 flex flex-col gap-2"
-              >
-                {navItems.map((item, index) => {
+              <nav className="mt-8 flex flex-col gap-2">
+                {navItems.map((item) => {
                   const isActive = pathname === item.href;
                   return (
-                    <motion.div
+                    <div
                       key={item.href}
-                      initial={{ opacity: 0, x: 12 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05 }}
                     >
                       <Link
                         href={item.href}
@@ -105,7 +96,7 @@ export function Header() {
                       >
                         {item.label}
                       </Link>
-                    </motion.div>
+                    </div>
                   );
                 })}
                 <Button asChild className="mt-4 h-12 w-full text-base" onClick={() => setMenuOpen(false)}>
@@ -113,7 +104,7 @@ export function Header() {
                     Join the Run
                   </a>
                 </Button>
-              </motion.nav>
+              </nav>
             </SheetContent>
           </Sheet>
         </div>

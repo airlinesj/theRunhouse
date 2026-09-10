@@ -18,7 +18,7 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://therunhouse.example"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://therunhouse.vercel.app"),
   title: {
     template: "%s | theRunhouse",
     default: "theRunhouse | Where runners belong.",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "theRunhouse",
     description: "Where runners belong.",
-    url: "https://therunhouse.example",
+    url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://therunhouse.vercel.app",
     siteName: "theRunhouse",
     type: "website",
   },

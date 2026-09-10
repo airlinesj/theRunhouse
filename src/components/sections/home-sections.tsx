@@ -97,6 +97,8 @@ export function HomeSections() {
                   alt="Runners gathering"
                   width={1200}
                   height={900}
+                  quality={70}
+                  sizes="(min-width: 1024px) 42vw, 100vw"
                   className="h-full w-full object-cover"
                 />
               </div>

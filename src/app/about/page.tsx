@@ -43,6 +43,8 @@ export default function AboutPage() {
             alt="Members running together in the city"
             width={1200}
             height={900}
+            quality={70}
+            sizes="(min-width: 1024px) 58vw, 100vw"
             className="h-[480px] w-full object-cover"
           />
         </div>
