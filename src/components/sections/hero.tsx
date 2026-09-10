@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, MapPin, Play } from "lucide-react";
+import { ArrowDown, ArrowRight, MapPin } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -18,87 +18,61 @@ const fadeInUp = {
 };
 
 export function Hero() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <section className="relative overflow-hidden">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 pb-16 pt-10 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:pb-24 lg:pt-16">
+    <section className="relative isolate flex min-h-[calc(100svh-73px)] items-end overflow-hidden">
+      <Image
+        src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1800&q=80"
+        alt="Runners moving through a city at night"
+        fill
+        priority
+        quality={75}
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(27,42,74,0.98)_0%,rgba(27,42,74,0.8)_45%,rgba(27,42,74,0.48)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(27,42,74,0.98)_0%,transparent_55%)]" />
+
+      <div className="relative mx-auto w-full max-w-7xl px-4 pb-10 pt-24 sm:px-6 sm:pb-16 lg:px-8 lg:pb-20">
         <motion.div
-          className="relative z-10 flex flex-col justify-center"
-          initial="hidden"
+          initial={prefersReducedMotion ? false : "hidden"}
           animate="visible"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
-          }}
+          variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }}
+          className="max-w-3xl"
         >
           <motion.div custom={0} variants={fadeInUp}>
-            <Badge className="mb-6 w-fit border-[#F4C95D]/40 bg-[#F4C95D]/12 text-[#F4C95D]">23 members & counting</Badge>
+            <Badge className="mb-6 border-[#F4C95D]/40 bg-[#F4C95D]/12 text-[#F4C95D]">Community running club</Badge>
           </motion.div>
-          <motion.h1
-            custom={0.08}
-            variants={fadeInUp}
-            className="max-w-xl text-5xl font-black tracking-[-0.08em] text-foreground sm:text-6xl lg:text-7xl"
-          >
-            Run with your people.
+          <motion.h1 custom={0.08} variants={fadeInUp} className="max-w-2xl text-6xl font-black leading-[0.92] tracking-[-0.08em] text-foreground sm:text-8xl">
+            theRunhouse
           </motion.h1>
-          <motion.p custom={0.16} variants={fadeInUp} className="mt-6 max-w-md text-lg text-muted">
-            Our first run is Saturday 26 September at the Resim Mall loop. We’re a fresh running crew building momentum together, with easy km, good energy, and a welcoming pace for everyone.
+          <motion.p custom={0.16} variants={fadeInUp} className="mt-5 text-2xl font-semibold text-[#F4C95D] sm:text-3xl">
+            Where runners belong.
           </motion.p>
-          <motion.div custom={0.22} variants={fadeInUp} className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <motion.p custom={0.22} variants={fadeInUp} className="mt-5 max-w-xl text-base leading-7 text-foreground-muted sm:text-lg">
+            A welcoming city crew for easy km, good energy, and the kind of consistency that starts with showing up this week.
+          </motion.p>
+          <motion.div custom={0.28} variants={fadeInUp} className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg" className="w-full justify-center sm:w-auto">
-              <a href="https://wa.me/263771371597?text=Hi%20I%20want%20to%20join%20theRunhouse" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2">
+              <Link href="/join" className="inline-flex items-center gap-2">
                 Join the Run
                 <ArrowRight className="h-4 w-4" />
-              </a>
-            </Button>
-            <Button variant="secondary" size="lg" asChild className="w-full justify-center sm:w-auto">
-              <Link href="/schedule" className="inline-flex items-center gap-2">
-                <Play className="h-4 w-4" />
-                View schedule
               </Link>
             </Button>
+            <Button variant="outline" size="lg" asChild className="w-full border-border bg-[rgba(27,42,74,0.45)] justify-center sm:w-auto">
+              <Link href="/schedule">See this week&apos;s schedule</Link>
+            </Button>
           </motion.div>
-          <motion.div custom={0.3} variants={fadeInUp} className="mt-10 flex flex-wrap gap-6 text-sm text-muted">
-            <div className="flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-[#F4C95D]" />
-              First run: Resim Mall loop, Sat 26 Sep
-            </div>
-            <div>Next sessions: TBA</div>
+          <motion.div custom={0.34} variants={fadeInUp} className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-foreground-muted">
+            <span className="flex items-center gap-2"><span className="font-semibold text-[#F4C95D]">Next run</span> Saturday, 7:00 AM</span>
+            <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-[#F4C95D]" /> Resim Mall loop</span>
+            <span><span className="font-semibold text-[#F4C95D]">Pace</span> Easy · 5 km</span>
           </motion.div>
         </motion.div>
-
-        <motion.div
-          className="relative"
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div className="absolute -left-14 top-10 h-40 w-40 rounded-full bg-[#F4C95D]/16 blur-3xl" />
-          <div className="absolute -right-8 bottom-8 h-44 w-44 rounded-full bg-[#FF6B4A]/20 blur-3xl" />
-          <div className="relative overflow-hidden rounded-[32px] border border-border bg-surface p-3 shadow-[0_30px_80px_rgba(10,18,30,0.35)]">
-            <div className="relative overflow-hidden rounded-[24px]">
-              <Image
-                src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1200&q=80"
-                alt="Runners on a city street"
-                width={1200}
-                height={1400}
-                quality={70}
-                sizes="(min-width: 1024px) 42vw, 100vw"
-                className="h-[560px] w-full object-cover"
-              />
-            </div>
-            <div className="absolute inset-x-6 bottom-6 rounded-2xl border border-border bg-[rgba(27,42,74,0.8)] p-4 backdrop-blur-md">
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-muted">Next pace group</p>
-                  <p className="mt-2 text-xl font-semibold text-foreground">Sunset social 5K</p>
-                </div>
-                <div className="rounded-full bg-[#F4C95D]/14 px-3 py-1 text-sm font-semibold text-[#F4C95D]">
-                  6:30 PM
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+        <a href="#proof" className="mt-12 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#F4C95D] transition hover:text-foreground" aria-label="Scroll to club proof">
+          See why we run <ArrowDown className="h-4 w-4" />
+        </a>
       </div>
     </section>
   );

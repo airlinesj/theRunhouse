@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -48,18 +48,19 @@ export function TestimonialCarousel({
   autoplayDelay = 5000,
   className,
 }: TestimonialCarouselProps) {
+  const prefersReducedMotion = useReducedMotion();
   const [index, setIndex] = useState(0);
   const current = testimonials[index];
 
   useEffect(() => {
-    if (!autoplay || testimonials.length <= 1) return;
+    if (prefersReducedMotion || !autoplay || testimonials.length <= 1) return;
 
     const timer = window.setInterval(() => {
       setIndex((currentIndex) => (currentIndex + 1) % testimonials.length);
     }, autoplayDelay);
 
     return () => window.clearInterval(timer);
-  }, [autoplay, autoplayDelay, testimonials.length]);
+  }, [autoplay, autoplayDelay, prefersReducedMotion, testimonials.length]);
 
   const next = () => setIndex((index + 1) % testimonials.length);
   const prev = () => setIndex((index - 1 + testimonials.length) % testimonials.length);
@@ -83,10 +84,10 @@ export function TestimonialCarousel({
           <AnimatePresence mode="wait">
             <motion.div
               key={current.name}
-              initial={{ opacity: 0, y: 20 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.25 }}
+              exit={prefersReducedMotion ? undefined : { opacity: 0, y: -20 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.25 }}
               className="space-y-6"
             >
               <p className="text-xl leading-8 text-foreground sm:text-2xl">“{current.quote}”</p>

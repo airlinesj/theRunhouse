@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
+
 import { Hero } from "@/components/sections/hero";
 import { HomeSections } from "@/components/sections/home-sections";
+
+export const metadata: Metadata = {
+  title: "Run with your people",
+  description: "theRunhouse is a welcoming community running club for easy km, good energy, and runners who want to belong.",
+  openGraph: {
+    title: "theRunhouse | Run with your people",
+    description: "A welcoming community running club for easy km, good energy, and runners who want to belong.",
+    url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://therunhouse.vercel.app",
+    images: ["https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1800&q=80"],
+  },
+};
 
 export default function HomePage() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://therunhouse.vercel.app";
