@@ -53,15 +53,12 @@ export function Hero() {
           <motion.p custom={0.22} variants={fadeInUp} className="mt-5 max-w-xl text-base leading-7 text-foreground-muted sm:text-lg">
             A welcoming city crew for easy km, good energy, and the kind of consistency that starts with showing up this week.
           </motion.p>
-          <motion.div custom={0.28} variants={fadeInUp} className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <motion.div custom={0.28} variants={fadeInUp} className="mt-8">
             <Button asChild size="lg" className="w-full justify-center sm:w-auto">
-              <Link href="/join" className="inline-flex items-center gap-2">
-                Join the Run
+              <Link href="#community" className="inline-flex items-center gap-2">
+                Let&apos;s go through the community
                 <ArrowRight className="h-4 w-4" />
               </Link>
-            </Button>
-            <Button variant="outline" size="lg" asChild className="w-full border-border bg-[rgba(27,42,74,0.45)] justify-center sm:w-auto">
-              <Link href="/schedule">See this week&apos;s schedule</Link>
             </Button>
           </motion.div>
           <motion.div custom={0.34} variants={fadeInUp} className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-foreground-muted">

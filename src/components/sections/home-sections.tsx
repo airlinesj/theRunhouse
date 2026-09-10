@@ -23,6 +23,34 @@ export function HomeSections() {
 
   return (
     <>
+      <section id="community" className="border-b border-border bg-background py-14 sm:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="The community"
+            title="Find your way into the crew"
+            description="Explore the club, find a run that fits, and take your next step with people who are moving too."
+          />
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { href: "/about", label: "Meet the club", text: "Our story, values, and leadership." },
+              { href: "/schedule", label: "Find a run", text: "Choose your pace and distance." },
+              { href: "/events", label: "See events", text: "Discover what is coming up." },
+              { href: "/membership", label: "Membership", text: "See what being part of the crew means." },
+              { href: "/contact", label: "Contact us", text: "Ask a question or find the location." },
+              { href: "/join", label: "Join the Run", text: "Tell us a little about yourself." },
+            ].map((item) => (
+              <Link key={item.href} href={item.href} className="group border border-border bg-surface p-5 transition hover:-translate-y-1 hover:border-[#FF6B4A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B4A]">
+                <span className="flex items-center justify-between gap-4 text-lg font-semibold text-foreground">
+                  {item.label}
+                  <ArrowRight className="h-4 w-4 text-[#FF6B4A] transition group-hover:translate-x-1" />
+                </span>
+                <span className="mt-2 block text-sm leading-6 text-muted">{item.text}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="proof" className="border-b border-border bg-surface py-8 sm:py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-muted">Small crew. Real momentum.</p>

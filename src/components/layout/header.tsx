@@ -21,6 +21,7 @@ const whatsappMemberLink = "https://wa.me/263771371597?text=Hi%20I%20want%20to%2
 
 export function Header() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -36,32 +37,37 @@ export function Header() {
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Main navigation">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "text-sm font-medium transition",
-                  isActive ? "text-accent" : "text-muted hover:text-foreground",
-                )}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
+        {!isHome ? (
+          <nav className="hidden items-center gap-7 md:flex" aria-label="Main navigation">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    "text-sm font-medium transition",
+                    isActive ? "text-accent" : "text-muted hover:text-foreground",
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+        ) : null}
 
-        <div className="hidden items-center gap-3 md:flex">
-          <Button variant="secondary" asChild className="h-11 px-5 text-sm">
-            <a href={whatsappMemberLink} target="_blank" rel="noreferrer">
-              Join the Run
-            </a>
-          </Button>
-        </div>
+        {!isHome ? (
+          <div className="hidden items-center gap-3 md:flex">
+            <Button variant="secondary" asChild className="h-11 px-5 text-sm">
+              <a href={whatsappMemberLink} target="_blank" rel="noreferrer">
+                Join the Run
+              </a>
+            </Button>
+          </div>
+        ) : null}
 
+        {!isHome ? (
         <div className="md:hidden">
           <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
             <SheetTrigger asChild>
@@ -108,6 +114,7 @@ export function Header() {
             </SheetContent>
           </Sheet>
         </div>
+        ) : null}
       </div>
     </header>
   );
