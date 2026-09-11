@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import type { Run } from "@/lib/data/runs";
 
@@ -18,15 +19,35 @@ export function RunCard({ run, className }: RunCardProps) {
   return (
     <Card className={cn("overflow-hidden bg-surface transition duration-200 hover:-translate-y-1", className)}>
       {run.image ? (
-        <div className="relative aspect-[4/3] w-full overflow-hidden">
-          <Image
-            src={run.image}
-            alt={`${run.title} promotional graphic`}
-            fill
-            sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
-            className="object-cover"
-          />
-        </div>
+        <Dialog>
+          <DialogTrigger asChild>
+            <button
+              type="button"
+              className="relative block aspect-[4/3] w-full cursor-zoom-in overflow-hidden p-0 text-left"
+              aria-label={`View ${run.title} graphic`}
+            >
+              <Image
+                src={run.image}
+                alt={`${run.title} promotional graphic`}
+                fill
+                sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                className="object-cover transition duration-300 hover:scale-105"
+              />
+            </button>
+          </DialogTrigger>
+          <DialogContent className="max-w-3xl bg-background p-3 sm:p-5">
+            <DialogTitle className="text-xl text-foreground">{run.title}</DialogTitle>
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-surface-strong">
+              <Image
+                src={run.image}
+                alt={`${run.title} promotional graphic, enlarged`}
+                fill
+                sizes="(min-width: 768px) 720px, calc(100vw - 2rem)"
+                className="object-contain"
+              />
+            </div>
+          </DialogContent>
+        </Dialog>
       ) : null}
       <CardHeader className="pb-2">
         <div className="flex items-center justify-between gap-3">

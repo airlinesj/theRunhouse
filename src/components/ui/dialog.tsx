@@ -10,6 +10,7 @@ const Dialog = DialogPrimitive.Root;
 const DialogTrigger = DialogPrimitive.Trigger;
 const DialogPortal = DialogPrimitive.Portal;
 const DialogClose = DialogPrimitive.Close;
+const DialogTitle = DialogPrimitive.Title;
 
 const DialogOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
@@ -60,4 +61,4 @@ const DialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivEleme
 );
 DialogFooter.displayName = "DialogFooter";
 
-export { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogFooter, DialogOverlay, DialogPortal, DialogClose };
+export { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogFooter, DialogOverlay, DialogPortal, DialogClose, DialogTitle };
