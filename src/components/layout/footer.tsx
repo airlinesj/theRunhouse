@@ -10,7 +10,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.1fr_0.8fr_1.1fr] lg:px-8">
         <div>
           <div className="mb-4 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#F4C95D]/50 bg-[#F4C95D]/10 text-xs font-black uppercase tracking-[0.2em] text-[#F4C95D]">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F4C95D] text-xs font-black uppercase tracking-[0.2em] text-[#1B2A4A]">
               TR
             </div>
             <div className="leading-none">

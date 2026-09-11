@@ -42,9 +42,9 @@ export function Hero() {
           className="max-w-3xl"
         >
           <motion.div custom={0} variants={fadeInUp}>
-            <Badge className="mb-6 border-[#F4C95D]/40 bg-[#F4C95D]/12 text-[#F4C95D]">Community running club</Badge>
+            <Badge className="mb-6 hidden md:flex">Community running club</Badge>
           </motion.div>
-          <motion.h1 custom={0.08} variants={fadeInUp} className="max-w-2xl text-6xl font-black leading-[0.92] tracking-[-0.08em] text-foreground sm:text-8xl">
+          <motion.h1 custom={0.08} variants={fadeInUp} className="max-w-full break-words text-4xl font-black leading-[0.92] tracking-[-0.08em] text-foreground sm:max-w-2xl sm:text-8xl">
             theRunhouse
           </motion.h1>
           <motion.p custom={0.16} variants={fadeInUp} className="mt-5 text-2xl font-semibold text-[#F4C95D] sm:text-3xl">

@@ -12,7 +12,7 @@ export interface EventCardProps {
 
 export function EventCard({ event, className }: EventCardProps) {
   return (
-    <Card className={cn("overflow-hidden bg-surface transition duration-200 hover:-translate-y-1 hover:border-[#F4C95D]/50", className)}>
+    <Card className={cn("overflow-hidden bg-surface transition duration-200 hover:-translate-y-1", className)}>
       <div className="relative h-56 w-full overflow-hidden">
         <Image src={event.image} alt={event.title} fill quality={70} sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover transition duration-500 hover:scale-105" />
       </div>

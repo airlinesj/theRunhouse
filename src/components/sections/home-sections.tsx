@@ -39,7 +39,7 @@ export function HomeSections() {
               { href: "/contact", label: "Contact us", text: "Ask a question or find the location." },
               { href: "/join", label: "Join the Run", text: "Tell us a little about yourself." },
             ].map((item) => (
-              <Link key={item.href} href={item.href} className="group border border-border bg-surface p-5 transition hover:-translate-y-1 hover:border-[#FF6B4A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B4A]">
+                <Link key={item.href} href={item.href} className="group bg-surface p-5 transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B4A]">
                 <span className="flex items-center justify-between gap-4 text-lg font-semibold text-foreground">
                   {item.label}
                   <ArrowRight className="h-4 w-4 text-[#FF6B4A] transition group-hover:translate-x-1" />
@@ -78,8 +78,8 @@ export function HomeSections() {
               { title: "Show up, no pressure", text: "A missed week is not a missed chance. Come back when you are ready.", icon: <ShieldCheck className="h-5 w-5" /> },
               { title: "Coffee after", text: "The best part of the run is often the conversation that follows it.", icon: <Coffee className="h-5 w-5" /> },
             ].map((item) => (
-              <div key={item.title} className="border border-border bg-background p-6 shadow-soft">
-                <div className="mb-7 flex h-11 w-11 items-center justify-center rounded-full bg-[#FF6B4A]/12 text-[#FF6B4A]">{item.icon}</div>
+              <div key={item.title} className="bg-background p-6 shadow-soft">
+                <div className="mb-7 flex h-11 w-11 items-center justify-center rounded-full bg-[#FF6B4A] text-[#1B2A4A]">{item.icon}</div>
                 <h3 className="text-2xl font-semibold text-foreground">{item.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-muted">{item.text}</p>
               </div>

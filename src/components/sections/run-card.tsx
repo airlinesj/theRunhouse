@@ -1,4 +1,5 @@
 import { MapPin, TimerReset } from "lucide-react";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -15,7 +16,18 @@ export interface RunCardProps {
 
 export function RunCard({ run, className }: RunCardProps) {
   return (
-    <Card className={cn("overflow-hidden bg-surface transition duration-200 hover:-translate-y-1 hover:border-[#F4C95D]/50", className)}>
+    <Card className={cn("overflow-hidden bg-surface transition duration-200 hover:-translate-y-1", className)}>
+      {run.image ? (
+        <div className="relative aspect-[4/3] w-full overflow-hidden">
+          <Image
+            src={run.image}
+            alt={`${run.title} promotional graphic`}
+            fill
+            sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+            className="object-cover"
+          />
+        </div>
+      ) : null}
       <CardHeader className="pb-2">
         <div className="flex items-center justify-between gap-3">
           <Badge variant="secondary">{run.day}</Badge>

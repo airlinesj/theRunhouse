@@ -11,6 +11,7 @@ export type Run = {
   description: string;
   attendees: number;
   intensity: "Low" | "Medium" | "High";
+  image?: string;
 };
 
 export const runs: Run[] = [
@@ -25,6 +26,7 @@ export const runs: Run[] = [
     description: "Our first community run — a relaxed start, easy pacing, and a good first session for the crew.",
     attendees: 23,
     intensity: "Low",
+    image: "/first.jpeg",
   },
   {
     id: "run-2",
@@ -37,6 +39,7 @@ export const runs: Run[] = [
     description: "Next session details to be announced, but we’re keeping the Karina pace session in the mix.",
     attendees: 23,
     intensity: "High",
+    image: "/launch.jpeg",
   },
   {
     id: "run-3",

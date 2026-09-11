@@ -28,7 +28,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-border bg-[rgba(27,42,74,0.8)] backdrop-blur-lg">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3" aria-label="theRunhouse home">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#F4C95D]/50 bg-[#F4C95D]/10 text-xs font-black uppercase tracking-[0.2em] text-[#F4C95D]">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F4C95D] text-xs font-black uppercase tracking-[0.2em] text-[#1B2A4A]">
             TR
           </div>
           <div className="leading-none">
@@ -78,7 +78,7 @@ export function Header() {
             <SheetContent side="right" className="bg-surface px-5 pb-8 pt-6">
               <div className="mt-4 flex items-center justify-between border-b border-border pb-4">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full border border-[#F4C95D]/50 bg-[#F4C95D]/10 text-[10px] font-black uppercase tracking-[0.2em] text-[#F4C95D]">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F4C95D] text-[10px] font-black uppercase tracking-[0.2em] text-[#1B2A4A]">
                     TR
                   </div>
                   <span className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">Menu</span>

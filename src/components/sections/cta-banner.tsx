@@ -26,7 +26,7 @@ export function CTABanner({
   className,
 }: CTABannerProps) {
   return (
-    <Card className={cn("w-full overflow-hidden border border-[#F4C95D]/30 bg-gradient-to-r from-[#F4C95D]/10 via-[#243656] to-[#243656] shadow-glow", className)}>
+    <Card className={cn("w-full overflow-hidden bg-surface-strong shadow-glow", className)}>
       <CardContent className="flex flex-col gap-6 p-8 sm:p-10 lg:flex-row lg:items-center lg:justify-between">
         <div className="max-w-xl">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#F4C95D]">{eyebrow}</p>
