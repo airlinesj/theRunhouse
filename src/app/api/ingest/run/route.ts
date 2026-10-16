@@ -7,6 +7,7 @@ import {
 } from "@/lib/firebase/http";
 import { getPublicRun } from "@/lib/marathon/service";
 import type { RunSplit } from "@/lib/marathon/types";
+import { emitEvent } from "@/lib/webhooks/dispatch";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -75,7 +76,13 @@ export async function POST(request: Request) {
         { merge: true },
       );
 
-    return jsonOk(await getPublicRun(body.runId));
+    const run = await getPublicRun(body.runId);
+    await emitEvent("run.public.updated", {
+      runId: body.runId,
+      userId: body.userId,
+      distanceMeters: body.distanceMeters ?? 0,
+    });
+    return jsonOk(run);
   } catch (error) {
     console.error("[api/ingest/run] failed", error);
     return jsonError("Failed to ingest run.", 500);
